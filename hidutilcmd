@@ -1,0 +1,48 @@
+###############################################################################
+# hidutilcmd
+# Custom keyboard mapping for Apple macOS `Ventura' version 13.7.4, for mid-
+#   2017 Apple MacBook Pros with Touch Bar, but without a physical _esc_ key
+#
+# To install:  `chmod -v a+rx,go-w hidutilcmd'
+# Optionally:  `sudo visudo' and then append the following line to _sudoers_ in
+#   order to be able to run `sudo hidutilcmd' without a password:
+#   username ALL = NOPASSWD: /path/to/hidutilcmd
+#
+# Usage:  `sudo hidutilcmd'
+# Optionally add `sudo /path/to/hidutilcmd' to your _.kshrc_ or other shell
+#   startup file, _e. g._:
+#   hidutil property --get "UserKeyMapping" |tee .DS_Store
+#   if grep \(null\) .DS_Store >/dev/null
+#      then sudo $HOME/Documents/config/hidutilcmd/hidutilcmd
+#   fi
+#   rm .DS_Store
+#
+# See: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+#
+# 2100 Tuesday, 25 Adar 5785 (5 Farvardin 3763) [25 March 2025] {25 Ramadan
+#   1446} <20172>
+#
+# Austin B. Kim
+#
+# Modified:
+#   2359 Wednesday, 26 Adar 5785 (6 Farvardin 3763) [26 March 2025] {26 Ramadan
+#     1446} <20173>
+###############################################################################
+
+# Remap...
+HIDUTILARGS="{\"UserKeyMapping\":"
+#   ...your physical _caps lock_ key to function as your logical _tab_ key, ...
+HIDUTILARGS="$HIDUTILARGS [{\"HIDKeyboardModifierMappingSrc\": 0x700000039,"
+  HIDUTILARGS="$HIDUTILARGS \"HIDKeyboardModifierMappingDst\": 0x70000002b},"
+#   ...your physical _tab_ key to function as your logical _`_/_~_ key, ...
+ HIDUTILARGS="$HIDUTILARGS {\"HIDKeyboardModifierMappingSrc\": 0x70000002b,"
+  HIDUTILARGS="$HIDUTILARGS \"HIDKeyboardModifierMappingDst\": 0x700000035},"
+#   ...your physical _`_/_~_ key to function as your logical _esc_ key, ...
+ HIDUTILARGS="$HIDUTILARGS {\"HIDKeyboardModifierMappingSrc\": 0x700000035,"
+  HIDUTILARGS="$HIDUTILARGS \"HIDKeyboardModifierMappingDst\": 0x700000029},"
+#   ...and your physical right-side _option_ (aka _alt_) key to function as
+#   your logical _caps lock_ key
+ HIDUTILARGS="$HIDUTILARGS {\"HIDKeyboardModifierMappingSrc\": 0x7000000e6,"
+  HIDUTILARGS="$HIDUTILARGS \"HIDKeyboardModifierMappingDst\": 0x700000039}]}"
+hidutil property --set "$HIDUTILARGS"
+unset HIDUTILARGS
