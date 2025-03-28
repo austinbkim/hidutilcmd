@@ -28,7 +28,7 @@ sudo /path/to/hidutilcmd
 
 ## Installation
 
-`hidutilcmd` must be installed with execute permissions, and should be installed with write permissions disabled for “group” and “other,” _e. g._:  `chmod a+rx,go-w hidutilcmd`.  On Apple macOS systems, the primary user (aka administrator) will typically be a mamber of group `wheel`, allowing invocation of `hidutilcmd` via `sudo`.
+`hidutilcmd` must be installed with execute permissions, and should be installed with write permissions disabled for “group” and “other,” _e. g._:  `chmod a+rx,go-w hidutilcmd`.  On Apple macOS systems, the primary user (aka administrator) will typically be a member of group `wheel`, allowing invocation of `hidutilcmd` via `sudo`.
 
 To allow invoking `sudo hidutilcmd` without being prompted for the user password, optionally run `sudo visudo` and append the following line to `sudoers`:
 
