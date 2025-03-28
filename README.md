@@ -12,7 +12,7 @@
 
 ## Name
 
-`hidutilcmd` -- Re-map _caps lock_, _tab_, _``_/_~_, and right-side _option_ (aka _alt_) keys on 2016--2019 Apple MacBook Pros without physical _esc_ape keys.
+`hidutilcmd` -- Re-map _caps lock_, _tab_, *\`*/*~*, and right-side _option_ (aka _alt_) keys on 2016--2019 Apple MacBook Pros without physical *esc*ape keys.
 
 ## Synopsis
 
@@ -24,7 +24,7 @@ sudo /path/to/hidutilcmd
 
 ## Description
 
-`hidutilcmd` remaps the physical _caps lock_ key to a logical _tab_ key, the physical _tab_ key to a logical _``_/_~_ key, the physical _``_/_~_ key to a logical _esc_ key, and the right-side _option_ key (aka _alt_ key) to a logical _caps lock_ key, using Apple macOS’s [`hidutil`](https://developer.apple.com/library/archive/technotes/tn2450/_index.html) utility, intended for use on 2016--2019 Apple MacBook Pros without physical _esc_ keys.  The rationale for using the physical _caps lock_ key as a logical _tab_ key and for using the right _option_ (aka _alt_) key as a logical _caps lock_ key is that _caps lock_ is typically seldom used, whereas the right _option_ key is almost never used.
+`hidutilcmd` remaps the physical _caps lock_ key to a logical _tab_ key, the physical _tab_ key to a logical *\`*/*~* key, the physical *\`*/*~* key to a logical _esc_ key, and the right-side _option_ key (aka _alt_ key) to a logical _caps lock_ key, using Apple macOS’s [`hidutil`](https://developer.apple.com/library/archive/technotes/tn2450/_index.html) utility, intended for use on 2016--2019 Apple MacBook Pros without physical _esc_ keys.  The rationale for using the physical _caps lock_ key as a logical _tab_ key and for using the right _option_ (aka _alt_) key as a logical _caps lock_ key is that _caps lock_ is typically seldom used, whereas the right _option_ key is almost never used.
 
 ## Installation
 
@@ -42,7 +42,7 @@ if grep \(null\) .DS_Store >/dev/null
 fi
 rm .DS_Store
 ```
-The above shell script snippet first queries whether the above key remapping already be in effect, and goes on to invoke `hidutilcmd` if not.
+The above shell script snippet first checks to see if the above key remapping already be in effect, and goes on to invoke `hidutilcmd` if not.
 
 ## See Also
 
@@ -54,8 +54,8 @@ _USB HID Usage Tables Specification_, Section 10:  Keyboard/Keypad page.
 
 ## Bugs
 
-Having to use `sudo` to run `hidutil` to remap keys presents a security risk, as all users on a system who wish to use `hidutil` must be granted `sudo` access.  Installing `hidutilcmd` with `root` as the owner and the `setuid` bit set (and with the directory wherein `hidutilcmd` is located as well as all directories above it all the way up through `/` owned by `root` as required by macOS for this to work) would potentially be a better solution, but does not appear to work in all versions of macOS and is [deprecated by Apple](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html).
+Having to use `sudo` to run `hidutil` to remap keys presents a security risk, as all users on a system who wish to use `hidutil` must be granted `sudo` access.  Installing `hidutilcmd` with `root` as the owner and the `setuid` bit set (and with the directory wherein `hidutilcmd` is located, as well as all directories above it all the way up through `/`, owned by `root` as required by macOS for this to work) would potentially be a better solution, but does not appear to work in all versions of macOS and is [deprecated by Apple](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html).
 
-On the mid-2017 Apple MacBook Pro 15-inch used for testing, pressing the physical _caps lock_ key twice in succession causes _caps lock_ to become engaged (and the corresponding LED to turn on), even despite the above remapping.  The remapped physical right _option_ (aka _alt_) key can be used to turn _caps lock_ back off when this happens.
+On the mid-2017 Apple MacBook Pro 15-inch used for testing, pressing the physical _caps lock_ key twice in succession causes _caps lock_ to become engaged (and the corresponding LED to turn on), even despite the above remapping.  The remapped physical right _option_ (aka _alt_) key can be used to turn _caps lock_ back off in this case.
 
-Last modified:  Thursday, March 27, 2025 (tested under Apple macOS ‘Ventura’ version 13.7.4)
+Last modified:  Friday, March 28, 2025 (tested under Apple macOS ‘Ventura’ version 13.7.4)
