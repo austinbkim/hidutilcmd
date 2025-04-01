@@ -56,6 +56,6 @@ _USB HID Usage Tables Specification_, Section 10:  Keyboard/Keypad page.
 
 Having to use `sudo` to run `hidutil` to remap keys presents a security risk, as all users on a system who wish to use `hidutil` must be granted `sudo` access.  Installing `hidutilcmd` with `root` as the owner and the `setuid` bit set (and with the directory wherein `hidutilcmd` is located, as well as all directories above it all the way up through `/`, owned by `root` as required by macOS for this to work) would potentially be a better solution, but does not appear to work in all versions of macOS and is [deprecated by Apple](https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html).
 
-On the mid-2017 Apple MacBook Pro 15-inch used for testing, pressing the physical _caps lock_ key twice in succession causes _caps lock_ to become engaged (and the corresponding LED to turn on), even despite the above remapping.  The remapped physical right _option_ (aka _alt_) key can be used to turn _caps lock_ back off in this case.
+On the mid-2017 Apple MacBook Pro 15-inch used for testing, pressing the physical _caps lock_ key twice in rapid succession under macOS “Ventura” when _Accessibility_ -> _Keyboard_ -> _Full Keyboard Access_ is enabled in macOS _System Settings_ causes _caps lock_ to become engaged (and the corresponding LED to turn on), even despite the above remapping.  The remapped physical right _option_ (aka _alt_) key can be used to turn _caps lock_ back off in this case.
 
-Last modified:  Friday, March 28, 2025 (tested under Apple macOS ‘Ventura’ version 13.7.4)
+Last modified:  Monday, March 31, 2025 (tested under Apple macOS ‘Ventura’ version 13.7.5)
